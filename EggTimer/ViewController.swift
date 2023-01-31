@@ -8,9 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     @IBAction func eggButtonPress(_ sender: UIButton) {
-        
+        print(sender.titleLabel!.text!)
     }
 }
-
