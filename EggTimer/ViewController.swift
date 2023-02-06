@@ -19,7 +19,7 @@ class ViewController: UIViewController {
             TimerSet(seconds: 5)
         }
         else{
-            print("Timer set to 10")
+            print("Timer set to 12")
             TimerSet(seconds: 10)
         }
     }
