@@ -10,17 +10,21 @@ import UIKit
 class ViewController: UIViewController {
     @IBAction func eggButtonPress(_ sender: UIButton) {
         
-        if(sender.titleLabel?.text == "Soft"){
-            print("Timer set to 2")
-            TimerSet(seconds: 2)
-        }
-        else if(sender.titleLabel?.text == "Medium"){
+        let title = sender.titleLabel?.text
+        let eggTimes = ["Soft": 5.0, "Medium": 10.0, "Hard": 15]
+        
+        switch title {
+        case "Soft":
             print("Timer set to 5")
-            TimerSet(seconds: 5)
-        }
-        else{
-            print("Timer set to 12")
-            TimerSet(seconds: 10)
+            TimerSet(seconds:eggTimes["Soft"]!)
+        case "Medium":
+            print("Timer set to 10")
+            TimerSet(seconds: eggTimes["Medium"]!)
+        case "Hard":
+            print("Timer set to 15")
+            TimerSet(seconds: eggTimes["Hard"]!)
+        default:
+            print("Error!")
         }
     }
     
