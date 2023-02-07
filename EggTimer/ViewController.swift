@@ -24,7 +24,7 @@ class ViewController: UIViewController {
             print("Timer set to 15")
             TimerSet(seconds: eggTimes["Hard"]!)
         default:
-            print("test!")
+            print("testing!")
         }
     }
     
