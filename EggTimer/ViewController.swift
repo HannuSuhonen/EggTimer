@@ -7,31 +7,41 @@
 
 import UIKit
 
+var counter = 30
+weak var gameTimer: Timer?
+
 class ViewController: UIViewController {
     @IBAction func eggButtonPress(_ sender: UIButton) {
+        gameTimer?.invalidate()
         
         let title = sender.titleLabel?.text
-        let eggTimes = ["Soft": 5.0, "Medium": 10.0, "Hard": 15]
+        let eggTimes = ["Soft": 300, "Medium": 420, "Hard": 720]
         
         switch title {
         case "Soft":
-            print("Timer set to 5")
-            TimerSet(seconds:eggTimes["Soft"]!)
+            print("Timer set to 5 minutes!")
+            counter = eggTimes["Soft"]!
         case "Medium":
-            print("Timer set to 10")
-            TimerSet(seconds: eggTimes["Medium"]!)
+            print("Timer set to 7 minutes")
+            counter = eggTimes["Medium"]!
         case "Hard":
-            print("Timer set to 15")
-            TimerSet(seconds: eggTimes["Hard"]!)
+            print("Timer set to 12 minutes")
+            counter = eggTimes["Hard"]!
         default:
             print("testing!")
         }
+        
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
     }
     
-    func TimerSet(seconds: Double){
-        Timer.scheduledTimer(timeInterval: seconds,target: self,selector: #selector(fireTimer),userInfo: nil,repeats: false)
-    }
-    @objc func fireTimer() {
-        print("Timer fired!")
+    @objc func updateCounter() {
+        //example functionality
+        if counter > 0 {
+            print("\(counter) seconds")
+            counter -= 1
+        }
+        else if(counter == 0){
+            print("Timer end!")
+        }
     }
 }
