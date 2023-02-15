@@ -11,6 +11,9 @@ var counter = 30
 weak var gameTimer: Timer?
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var timeText: UILabel!
+    
     @IBAction func eggButtonPress(_ sender: UIButton) {
         gameTimer?.invalidate()
         
@@ -32,16 +35,18 @@ class ViewController: UIViewController {
         }
         
         gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        
+        
     }
     
     @objc func updateCounter() {
         //example functionality
         if counter > 0 {
-            print("\(counter) seconds")
             counter -= 1
+            timeText.text = String(counter)
         }
         else if(counter == 0){
-            print("Timer end!")
+            timeText.text = "Timer ended!"
         }
     }
 }
