@@ -46,7 +46,7 @@ class ViewController: UIViewController {
             timeText.text = String(counter)
         }
         else if(counter == 0){
-            timeText.text = "Timer ended!"
+            timeText.text = "Timer ended."
         }
     }
 }
