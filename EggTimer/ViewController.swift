@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 var counter = 30
 var selectedTime = 1
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
         gameTimer?.invalidate()
         
         let title = sender.titleLabel?.text
-        let eggTimes = ["Soft": 300, "Medium": 420, "Hard": 700]
+        let eggTimes = ["Soft": 5, "Medium": 420, "Hard": 700]
         
         switch title {
         case "Soft":
@@ -54,6 +55,9 @@ class ViewController: UIViewController {
         }
         else if(counter == 0){
             timeText.text = "Timer ended."
+            gameTimer?.invalidate()
+            let systemSoundID: SystemSoundID = 1304
+            AudioServicesPlayAlertSound(systemSoundID)
         }
     }
 }
